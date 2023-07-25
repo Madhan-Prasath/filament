@@ -109,7 +109,7 @@ php artisan migrate
 php artisan key:generate
 
 # Create an admin user for the Laravel Filament backend
-php artisan make:filament-resource User
+php artisan make:filament-user
 
 # Add the admin user email to the .env file under SUPER_ADMIN_EMAIL
 
