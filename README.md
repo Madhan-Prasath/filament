@@ -91,7 +91,7 @@ Once the database is set up and Google Login credentials are obtained, follow th
 
 ```sh
 # Clone the Filament Portal Laravel Backend repository
-git clone https://github.com/Madhan-Prasath/filament-laravel.git
+git clone git@github.com:Madhan-Prasath/filament.git
 
 # Navigate to the project directory
 cd filament-laravel
