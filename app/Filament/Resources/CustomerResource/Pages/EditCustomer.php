@@ -5,6 +5,7 @@ namespace App\Filament\Resources\CustomerResource\Pages;
 use App\Filament\Resources\CustomerResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Tapp\FilamentAuditing\RelationManagers\AuditsRelationManager;
 
 class EditCustomer extends EditRecord
 {
@@ -16,6 +17,4 @@ class EditCustomer extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
-
-
 }

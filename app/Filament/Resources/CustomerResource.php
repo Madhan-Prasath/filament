@@ -3,26 +3,27 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
+use App\Models\User;
 use Filament\Tables;
 use Pages\ViewCustomer;
 use App\Models\Customer;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
-use Livewire\TemporaryUploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Support\Facades\Storage;
 
 use Filament\Forms\Components\TextInput;
-
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\CustomerResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\CustomerResource\RelationManagers;
+use Tapp\FilamentAuditing\RelationManagers\AuditsRelationManager;
+
 
 class CustomerResource extends Resource
 {
@@ -38,9 +39,9 @@ class CustomerResource extends Resource
         if (Auth::user()->hasRole(self::Super_Admin)) {
 
             $aadhar = FileUpload::make('aadhar')
-                                ->disk('documents')
+                                ->disk('public')
                                 ->directory('aadhar')
-                                ->visibility('private')
+                                // ->visibility('private')
                                 ->maxSize(512)
                                 ->enableDownload()
                                 ->enableOpen();
@@ -107,7 +108,7 @@ class CustomerResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            AuditsRelationManager::class,
         ];
     }
 
