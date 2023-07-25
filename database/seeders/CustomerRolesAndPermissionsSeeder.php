@@ -2,11 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class CustomerRolesAndPermissionsSeeder extends Seeder
 {
@@ -19,11 +17,11 @@ class CustomerRolesAndPermissionsSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         // create Customer permissions
-        Permission::create(['name' => 'view customers',   'guard_name'  => 'web']);
+        Permission::create(['name' => 'view customers',   'guard_name' => 'web']);
         Permission::create(['name' => 'viewAny customers', 'guard_name' => 'web']);
-        Permission::create(['name' => 'create customers', 'guard_name'  => 'web']);
-        Permission::create(['name' => 'edit customers',   'guard_name'  => 'web']);
-        Permission::create(['name' => 'delete customers', 'guard_name'  => 'web']);
+        Permission::create(['name' => 'create customers', 'guard_name' => 'web']);
+        Permission::create(['name' => 'edit customers',   'guard_name' => 'web']);
+        Permission::create(['name' => 'delete customers', 'guard_name' => 'web']);
 
         // create Customer User with default permissions
         $userrole = Role::create(['name' => 'Customer User']);
@@ -37,7 +35,7 @@ class CustomerRolesAndPermissionsSeeder extends Seeder
 
         // create Customer Admin with default permissions
         $adminrole = Role::create(['name' => 'Customer Admin']);
-        $adminrole->givePermissionTo(['view customers', 'viewAny customers', 'create customers', 'edit customers', 'delete customers', 'restore customers']);
+        $adminrole->givePermissionTo(['view customers', 'viewAny customers', 'create customers', 'edit customers', 'delete customers']);
         $this->command->info('Roles and Permissions granted to Customer Admin');
     }
 }
